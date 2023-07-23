@@ -1,0 +1,229 @@
+\documentclass[a4paper, 10pt, openany]{book} 
+\usepackage[utf8]{inputenc} %to manage special characters
+\usepackage[T1]{fontenc} %to manage special characters
+\usepackage{charter}
+\usepackage[Bjarne]{fncychap} %fancy chapter style (many more available, like Sonny or Lenny etc.)
+\usepackage{fancyhdr} %to customize the headers
+\usepackage[lmargin=1.25in, rmargin=1.25in, tmargin=1.25in, bmargin=1.25in]{geometry} %sets the margins for the pages
+\setcounter{tocdepth}{2} %table of contents number depth for subsections (2 = x.x.x)
+\setcounter{secnumdepth}{4} %numbering depth for headers for subsections in the text(4 = x.x.x.x)
+\usepackage{url} %to include urls
+\usepackage{listings} %include this if you want to include code in the thesis
+\usepackage{amsmath,amssymb} %mathematical package
+\usepackage{siunitx} %includes SI-units
+\usepackage[bf]{caption} %makes float captions bold
+\usepackage{array, booktabs} %to make better tables
+\usepackage{float} %to include floats
+\usepackage[export]{adjustbox} %to adjust floats
+%\usepackage{subfig} %to include subfigures
+\usepackage{hyperref}
+\usepackage{chngcntr} %will make it possible to change the counter for tables, figures etc. such as below
+\counterwithin{figure}{chapter} %change counter for figures within sections (also possible to choose for each chapter
+\counterwithin{table}{chapter} %change counter for tables within sections
+\counterwithin{section}{chapter}
+\counterwithin{subsection}{section}
+\usepackage{color, xcolor} %edit e.g. text colors
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage[export]{adjustbox}
+\usepackage{wrapfig}
+\usepackage{caption}
+
+%nikkis additions
+\usepackage{blindtext} %latin filler text
+\usepackage{multicol} %multiple columns
+% Load the parskip package without options
+\usepackage{parskip}
+% Load the setspace package
+\usepackage{setspace}
+% graphics folder
+\graphicspath{ {./images/}}
+\setlength{\parskip}{1\baselineskip} %change the spacing between paragraphs
+\usepackage{booktabs}
+\usepackage{lscape}
+\usepackage{rotating}
+\usepackage{changepage} % Required for adjustwidth environment
+\usepackage{tablefootnote} % for table footnotes
+\usepackage[marginal]{footmisc}
+\usepackage{CJKutf8} %for japanese
+\usepackage[font=small]{caption} %make captions smaller
+\usepackage[amsmath]
+
+\ChNameVar{\fontsize{14}{22}\usefont{T1}{bch}{el}{n}\selectfont}
+\ChNumVar{\fontsize{14}{22}\usefont{T1}{bch}{el}{n}\selectfont}
+\ChTitleVar{\fontsize{14}{22}\usefont{T1}{phv}{b}{n}\selectfont}
+
+\usepackage{titlesec}
+\titleformat{\section}{\normalsize\bfseries}{\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{\parskip}{\parskip}
+\titleformat{\subsection}{\normalsize}{\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{\parskip}{\parskip}
+
+\usepackage[backend = biber,
+            style = numeric,
+            date = long,     % Long: 24th Mar. 1997 | Short: 24/03/1997
+            sorting = none,
+            maxcitenames = 3,   % max names to include before et. al.
+            ]{biblatex} %customize the look of your citations and bibliography
+\DeclareNameAlias{author}{last-first}
+\addbibresource{references.bib} %Zotero bibliography file
+\usepackage{comment} %to be able to comment out sections in the .tex files
+\usepackage{afterpage} %to customize page commands such as below
+\newcommand\myemptypage{
+    \null
+    \thispagestyle{empty}
+    \addtocounter{page}{-1}
+    \newpage
+    } %sets new page command to insert an empty page without adding to the page counter or having a page number
+
+\usepackage[titles]{tocloft}
+\setlength{\cftfignumwidth}{4em}
+\setlength{\cfttabnumwidth}{4em}
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{comment}
+%the title page should be an odd page (right hand side)
+
+\begin{titlepage}
+\newgeometry{left=1.5in, right=1.5in}
+\vspace*{1.5cm}
+
+\noindent{\large Nikki Hall} \\
+\vspace{1cm}
+
+\begin{doublespace}
+\noindent
+\textbf{\large Evaluating social gathering opportunities in a pandemic}\\
+\textbf{\large through image classification and reach analysis of city parks}\\
+%\vspace{0.25cm}
+
+\begin{CJK}{UTF8}{min}
+\noindent{\large 画像分類と到達圏解析を用いたパンデミック時の都市公園} \\
+\noindent{\large におけるsocial gatheringの評価} \\\vspace{0.25cm}
+\end{CJK}
+\end{doublespace}
+
+\vspace{6cm}
+\noindent Master's thesis in Architecture and Urban Design \\
+Supervisor: HONMA Kentaro \\
+%Co-supervisor: Co-supervisor Name \\
+July 2023 \\
+
+\vspace{0.2cm}
+\noindent University of Tokyo \\
+School of Engineering \\
+Department of Architecture \\
+
+%\begin{figure}[h]
+%    \includegraphics[width=0.28\textwidth]{Figures/ntnu_basic.png}
+%\end{figure}
+\end{titlepage}
+\restoregeometry
+\myemptypage %empty page such that the abstract starts at the first right hand side after the title page
+%\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% The pre-chapters
+\chapter*{Abstract} %pre-chapters should not be numbered, hence the "*"
+\pagenumbering{roman} %introductory pages should be roman
+\setcounter{page}{1}
+\addcontentsline{toc}{chapter}{\protect\numberline{}Abstract} %add the chapter to the table of contents, this is not automatically added when creating unnumbered chapters (*). Add it in a chapter style, and keep all chapters on the same numberline indent regardless of number or not on the chapter
+\input{Chapters/00Abstract} %insert the chapter text from the files
+
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{\protect\numberline{}Preface} 
+\input{Chapters/01Preface}
+
+\chapter*{Acknowledgements}
+\addcontentsline{toc}{chapter}{\protect\numberline{}Acknowledgements} 
+\input{Chapters/02Acknowledgements}
+
+\tableofcontents
+\addcontentsline{toc}{chapter}{\protect\numberline{}Contents}
+
+%add to table of contents list of figures and tables, and insert list of figures and tables
+\addcontentsline{toc}{chapter}{\protect\numberline{}\listfigurename}
+\listoffigures
+\addcontentsline{toc}{chapter}{\protect\numberline{}\listtablename}
+\listoftables
+
+\setlength{\cftfignumwidth}{3em}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Customize the layout of the main content of your thesis
+
+\pagestyle{fancy} %set customized page style for header
+\fancyhf{} %clear header and footer fields
+\renewcommand{\headrulewidth}{0pt} %set to no rule
+\fancyhead[LE, RO]{\thepage} %set the page number at left for even, right for odd pages
+\fancyhead[RE]{\leftmark} %set the chapter name at right for even, left for odd pages, didnt use LO
+%\fancyhead[RE]{\MakeUppercase\chaptername\ \thechapter} % set chapter number and name on left for even pages
+%\fancyhead[LO]{\chapter} % set chapter title and number on right for odd pages
+\setlength{\headheight}{12pt} %set the header height
+\addtolength{\topmargin}{-2.0pt}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%main content 
+\makeatletter
+\def\@makechapterhead#1{%
+  \vspace*{50\p@}% Space before chapter
+  {\parindent \z@ \raggedright \normalfont
+    \hrule\vspace{0.6cm}%
+    \noindent\textnormal{\MakeUppercase{\fontsize{14}{22}\selectfont CHAPTER \thechapter}}\par\nobreak%
+    \noindent\fontfamily{phv}\textbf{\MakeUppercase{\fontsize{14}{22}\selectfont #1}}\par\nobreak
+    \vspace{0.6cm}%
+    \hrule
+    \vskip 40\p@ % Space after chapter
+  }}
+\makeatother
+
+
+\pagenumbering{arabic}
+\chapter{Introduction}
+%\chapter*{\hrule\vspace{0.6cm}\noindent\textnormal{CHAPTER ONE}\\
+%\noindent\textbf{Introduction}\vspace{0.6cm}\hrule}
+\input{Chapters/03Introduction.tex}
+\cleardoublepage
+
+%the cleardoublepage command ensures that the next text page is on the right-hand side (odd page) and produces a blank page if necessary to achieve that, as all chapters should begin on the right hand side
+
+\chapter{Literature review}
+\input{Chapters/04Literature.tex}
+\cleardoublepage
+
+
+\chapter{City parks and times of crisis}\label{chapter_03}
+\input{Chapters/05PartI.tex}
+\cleardoublepage
+
+
+\chapter{Image classification of social gathering locations}\label{chapter_04}
+\input{Chapters/06PartII.tex}
+\cleardoublepage
+
+
+\chapter{Reach analysis of social gathering locations}\label{chapter_05}
+\input{Chapters/07PartIII.tex}
+%\cleardoublepage
+
+
+\chapter{Conclusion}
+\input{Chapters/08Conclusion.tex}
+\cleardoublepage
+
+
+\addcontentsline{toc}{chapter}{\protect\numberline{}References}
+\printbibliography[title={References}] 
+\cleardoublepage
+
+\chapter*{Appendices}
+\addcontentsline{toc}{chapter}{\protect\numberline{}Appendices} 
+\input{Chapters/09Appendix}
+\renewcommand{\headrulewidth}{0pt} %no rule
+\fancyfoot[C]{\thepage} %set the page numbers in the center of the footer instead 
+
+
+\end{document}
